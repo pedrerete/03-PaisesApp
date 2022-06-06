@@ -2,38 +2,15 @@
 <hr>
 <div class="row">
     <div class="col">
-        <form (ngSubmit)="buscar()" autocomplete="off">
-            <input type="text" class="form-control" name="termino" [(ngModel)]="termino" placeholder="Buscar pais..." >
-        </form>
+        <app-pais-input (onEnter)="buscarNombre($event)"></app-pais-input>
     </div>
 </div>
 <hr>
-<div class="alert alert-danger">
-    No se encontrol el termino: ABC123
+<div class="alert alert-danger" *ngIf="hayError">
+    No se encontrol el termino: {{fraseError}}
 </div>
-<div class="row">
+<div class="row" *ngIf="paises.length!==0">
     <div class="col">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Bandera</th>
-                    <th>Nombre</th>
-                    <th>Poblacion</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>bandera</td>
-                    <td>nombre1</td>
-                    <td>1234124</td>
-                    <td>
-                        <a href="/pais/mx">Ver...</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <app-pais-table [paises]="this.paises"></app-pais-table>
     </div>
 </div>
