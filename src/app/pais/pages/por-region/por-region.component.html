@@ -1,1 +1,17 @@
-<p>por-region works!</p>
+<p>Por Región</p>
+<hr>
+<div class="row">
+    <div class="col">
+        <app-pais-input [placeholder]="'Buscar por región...'" (onEnter)="buscarNombre($event)" (onDebounce)="sugerencias($event)">
+        </app-pais-input>
+    </div>
+</div>
+<hr>
+<div class="alert alert-danger" *ngIf="hayError">
+    No se encontrol el termino: {{fraseError}}
+</div>
+<div class="row" *ngIf="paises.length!==0">
+    <div class="col">
+        <app-pais-table [paises]="this.paises"></app-pais-table>
+    </div>
+</div>

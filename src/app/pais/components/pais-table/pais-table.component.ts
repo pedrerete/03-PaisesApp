@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Country } from '../../interfaces/pais.interface';
+import { Country, CapitalInfo } from '../../interfaces/pais.interface';
 
 @Component({
   selector: 'app-pais-table',
@@ -13,6 +13,7 @@ export class PaisTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+     
   }
 
 }

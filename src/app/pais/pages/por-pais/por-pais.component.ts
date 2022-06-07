@@ -12,22 +12,31 @@ export class PorPaisComponent implements OnInit {
   termino: string = "";
   paises: Country[] = [];
   fraseError: string = "";
- 
   constructor(private paisService: PaisService) { }
 
   ngOnInit(): void {
   }
-  buscarNombre(termino: string){
+  buscarNombre(termino: string) {
     this.termino = termino;
     this.hayError = false;
-    this.paisService.buscarPais(this.termino).subscribe((data: any) => {  
+    this.paisService.buscarPais(this.termino, 'name').subscribe((data: any) => {
+      data.forEach((pais: Country) => {
+        if (!pais.hasOwnProperty('capital')) {
+          pais.capital = ["No capital"]
+        }
+      });
       this.paises = data
-      }, (error) => {
-        this.paises = [];
-        this.hayError = true;
-        this.fraseError = this.termino;
+    }, (error) => {
+      this.paises = [];
+      this.hayError = true;
+      this.fraseError = this.termino;
     });
-    
   }
-
+  sugerencias(termino: string) {
+    if (termino.length === 0) {
+      this.paises = [];
+    } else {
+      this.buscarNombre(termino);
+    }
+  }
 }
