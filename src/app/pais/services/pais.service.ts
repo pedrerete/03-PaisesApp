@@ -15,4 +15,10 @@ export class PaisService {
   buscarPais(termino: string, tipo:string): Observable<Country[]> {
       const url = `${this._apiUrl}${tipo}/${termino}`;
     return this.http.get<Country[]>(url);
-  }}
+  }
+
+  getPaisPorcodigo(codigo: string): Observable<Country[]> {
+    const url = `${this._apiUrl}alpha/${codigo}`;
+    return this.http.get<Country[]>(url); 
+  }
+}

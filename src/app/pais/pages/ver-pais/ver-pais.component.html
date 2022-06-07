@@ -1,1 +1,53 @@
-<p>ver-pais works!</p>
+<div *ngIf="!pais; else divPais">
+    <div class="container">
+        <div class="row">
+            <div id="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="loading"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #divPais>
+    <div class="animate__animated animate__fadeInDown">
+        <div class="col-12">
+            <h1>Pais: <small>{{pais[0].name.common}} </small> </h1>
+        </div>
+        <div class="col-4">
+            <h3>Bandera</h3>
+            <img class="small-flag" [src]="pais[0].flags.svg " alt="{{pais[0].name.common}}">
+        </div>
+        <h3>Informacion</h3>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Nombre: </strong> {{pais[0].name.common}}
+            </li>
+            <li class="list-group-item">
+                <strong>Nombre en ingles: </strong> {{pais[0].name.official}}
+            </li>
+            <li class="list-group-item">
+                <strong>Capital: </strong> {{pais[0].capital}}
+            </li>
+            <li class="list-group-item">
+                <strong>Region: </strong> {{pais[0].region}}
+            </li>
+            <li class="list-group-item">
+                <strong>Poblacion: </strong> {{pais[0].population | number}}
+            </li>
+        </ul>
+    <h3>Traducciones</h3>
+        <div class="col">
+            <span class="badge text-bg-primary  mx-2" *ngFor="let lenguaje of pais[0].translations | keyvalue" >
+                {{lenguaje.value.common}}
+            </span>
+        </div>
+    </div>
+
+</ng-template>
