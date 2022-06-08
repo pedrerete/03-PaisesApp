@@ -11,11 +11,10 @@ import { switchMap, tap } from 'rxjs';
 export class VerPaisComponent implements OnInit {
   pais!: Country[]
   constructor(private activatedRoute: ActivatedRoute, private paisService: PaisService) { }
-  
-  
 
-  async ngOnInit(): Promise<void> {
-    await this.delay(3000);
+
+
+  ngOnInit() {
 
 
     //es lo mismo que el siguiente codigo
@@ -34,8 +33,6 @@ export class VerPaisComponent implements OnInit {
       });
 
   }
-   delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
-  
+
+
 }
