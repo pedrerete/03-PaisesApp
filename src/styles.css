@@ -2,3 +2,7 @@
 .small-flag {
     width: 50px;
   }
+  .xsmall-flag {
+    width: 30px;
+    margin-right: 15px;
+  }

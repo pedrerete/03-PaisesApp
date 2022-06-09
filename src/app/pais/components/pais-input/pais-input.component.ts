@@ -20,13 +20,14 @@ export class PaisInputComponent implements OnInit {
   ngOnInit(): void {
     this.debounce
     .pipe(
-      debounceTime(300)
+      debounceTime(200)
     )
     .subscribe(termino => {
       this.onDebounce.emit(termino);
     });
   }
   buscarNombre(){
+    
     this.onEnter.emit(this.termino);
   }
   teclaPresionada(){

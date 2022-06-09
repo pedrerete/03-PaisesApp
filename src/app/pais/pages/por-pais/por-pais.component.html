@@ -5,9 +5,20 @@
         <app-pais-input [placeholder]="'Buscar por pais...'" (onEnter)="buscarNombre($event)" (onDebounce)="sugerencias($event)"></app-pais-input>
     </div>
 </div>
+<ul *ngIf="mostrarSugerencias" class="list-group">
+    <li *ngIf="this.paisesSugeridos.length != 0" class="list-group-item list-group-item-action" (click)="buscarNombre(termino)">
+        <a class="nav-link" >
+            Buscar: {{termino}}
+        </a>
+    </li>
+    <li *ngFor="let pais of paisesSugeridos" class="list-group-item list-group-item-action">
+        <img [src]=pais.flags.svg class="xsmall-flag"><a [routerLink]="['/pais', pais.cca2]" >{{ pais.name.common }}</a>
+    </li>
+    
+</ul>
 <hr>
 <div class="alert alert-danger" *ngIf="hayError">
-    No se encontrol el termino: {{fraseError}}
+    No se encontro el termino: {{fraseError}}
 </div>
 <div class="row" *ngIf="paises.length!==0">
     <div class="col">
